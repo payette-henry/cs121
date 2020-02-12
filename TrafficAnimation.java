@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.util.Random;
+
 /**
  * CS 121 Project 1: Traffic Animation
  *
@@ -69,20 +71,76 @@ public class TrafficAnimation extends JPanel
 		// TODO: Use width, height, and xOffset to draw your scalable objects
 		// at their new positions on the screen
 
+		
+		
 		// This draws a green square. Replace it with your own object.
 		int squareSide = height / 5;
 		int squareY = height / 2 - squareSide / 2;
+		Random rgb = new Random();
+		
+		
 		
 		g.setColor(Color.green);
-		g.fillOval(xOffset, squareY, squareSide, squareSide);
-		g.setColor(Color.gray);
+		g.fillRect(0, height/2+height/3, width, height);
+		Color sky = new Color(0,0,50);
+		
+		
+		g.setColor(sky);
+		g.fillRect(0, 0, width, height/2-height/3);
 
-		int[] xpoints = new int[]{xOffset+(squareSide/2)-10,xOffset+(squareSide/2)+10,xOffset+(squareSide*2),xOffset-squareSide};
-		int[] ypoints = new int[] {squareSide*3,squareSide*3,squareSide*4,squareSide*4};
+		g.setColor(Color.white);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);		
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
+		
+		int yellowval = rgb.nextInt(255);
+		Color yellowbounce = new Color(yellowval,yellowval,0);
+		g.setColor(yellowbounce);
+
+		int[] xpoints = new int[]{xOffset+width/9,xOffset+width/11,width/3,width/2};
+		int[] ypoints = new int[] {squareY+height/20,squareY+height/20,height/2+height/3,height/2+height/3};
 		
 		Polygon beam = new Polygon(xpoints,ypoints,4);
 		g.fillPolygon(beam);
 		
+		g.setColor(Color.blue);
+		g.fillArc(xOffset+height/20, squareY-height/10,squareSide,squareSide,0,180);
+		g.setColor(Color.green);
+		g.fillOval(xOffset-height/7, squareY-height/75, squareSide*3, squareSide/3);
+
+		
+
+		
+		Color lights = new Color(rgb.nextInt(255),rgb.nextInt(255),rgb.nextInt(255));
+		g.setColor(lights);
+
+		int lightsXoffset = xOffset + height/4;
+		
+		g.fillOval(lightsXoffset, squareY, squareSide/5,squareSide/5);
+		
+		lightsXoffset = xOffset + height/8;
+		
+		g.fillOval(lightsXoffset, squareY, squareSide/5,squareSide/5);
+		
+		lightsXoffset = xOffset + height/100;
+		
+		g.fillOval(lightsXoffset, squareY, squareSide/5,squareSide/5);
+		
+
+		g.setColor(Color.lightGray);
+		g.fillOval((width/2)-(width/9),height/2+height/5,squareSide/3,squareSide/3);
+		g.fillRoundRect((width/2)-(width/9), height/2+height/4, squareSide/3, squareSide/2, width/30, height/32);
+		g.fillRoundRect((width/2)-(width/9), height/2+height/3, squareSide/7, squareSide/3, width/30, height/32);
+		g.fillRoundRect((width/2)-(width/12), height/2+height/3, squareSide/7, squareSide/3, width/30, height/30);
+		g.fillRoundRect((width/2)-(width/8), height/2+height/4, squareSide/7, squareSide/3, width/30, height/32);
+		g.fillRoundRect((width/2)-(width/15), height/2+height/4, squareSide/7, squareSide/3, width/30, height/32);
 		
 		
 		// Put your code above this line. This makes the drawing smoother.
