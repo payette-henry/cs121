@@ -40,7 +40,7 @@ public class TrafficAnimation extends JPanel
 	 * The anchor coordinate for drawing / animating. All of your vehicle's
 	 * coordinates should be relative to this offset value.
 	 */
-	private int xOffset = 0;
+	private int xOffset = -1000;
 
 	/**
 	 * The number of pixels added to xOffset each time paintComponent() is called.
@@ -66,7 +66,9 @@ public class TrafficAnimation extends JPanel
 		g.fillRect(0, 0, width, height);
 
 		// Calculate the new xOffset position of the moving object.
+		
 		xOffset  = (xOffset + stepSize) % width;
+		
 
 		// TODO: Use width, height, and xOffset to draw your scalable objects
 		// at their new positions on the screen
@@ -79,15 +81,16 @@ public class TrafficAnimation extends JPanel
 		Random rgb = new Random();
 		
 		
-		
+		//ground
 		g.setColor(Color.green);
 		g.fillRect(0, height/2+height/3, width, height);
 		Color sky = new Color(0,0,50);
 		
-		
+		//sky
 		g.setColor(sky);
 		g.fillRect(0, 0, width, height/2-height/3);
-
+		
+		//Stars
 		g.setColor(Color.white);
 		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
 		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);		
@@ -100,6 +103,7 @@ public class TrafficAnimation extends JPanel
 		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
 		g.drawArc(rgb.nextInt(width), rgb.nextInt(height/2-height/3), height/1000, height/1000, 0, 360);
 		
+		//tractor beam
 		int yellowval = rgb.nextInt(255);
 		Color yellowbounce = new Color(yellowval,yellowval,0);
 		g.setColor(yellowbounce);
@@ -110,8 +114,11 @@ public class TrafficAnimation extends JPanel
 		Polygon beam = new Polygon(xpoints,ypoints,4);
 		g.fillPolygon(beam);
 		
+		//cockpit
 		g.setColor(Color.blue);
 		g.fillArc(xOffset+height/20, squareY-height/10,squareSide,squareSide,0,180);
+		
+		//craft body		
 		g.setColor(Color.green);
 		g.fillOval(xOffset-height/7, squareY-height/75, squareSide*3, squareSide/3);
 
@@ -122,18 +129,21 @@ public class TrafficAnimation extends JPanel
 		g.setColor(lights);
 
 		int lightsXoffset = xOffset + height/4;
-		
+
+		// leftmost light
 		g.fillOval(lightsXoffset, squareY, squareSide/5,squareSide/5);
 		
 		lightsXoffset = xOffset + height/8;
 		
+		//middle light
 		g.fillOval(lightsXoffset, squareY, squareSide/5,squareSide/5);
 		
 		lightsXoffset = xOffset + height/100;
 		
+		//right light		
 		g.fillOval(lightsXoffset, squareY, squareSide/5,squareSide/5);
 		
-
+		//avatar
 		g.setColor(Color.lightGray);
 		g.fillOval((width/2)-(width/9),height/2+height/5,squareSide/3,squareSide/3);
 		g.fillRoundRect((width/2)-(width/9), height/2+height/4, squareSide/3, squareSide/2, width/30, height/32);
@@ -141,6 +151,166 @@ public class TrafficAnimation extends JPanel
 		g.fillRoundRect((width/2)-(width/12), height/2+height/3, squareSide/7, squareSide/3, width/30, height/30);
 		g.fillRoundRect((width/2)-(width/8), height/2+height/4, squareSide/7, squareSide/3, width/30, height/32);
 		g.fillRoundRect((width/2)-(width/15), height/2+height/4, squareSide/7, squareSide/3, width/30, height/32);
+		
+		//cornstalks
+		Color husk = new Color(0,100,0);
+		Color corn = new Color(175,175,0);
+		int stemXoffset = width/3;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = width/3 + width/2;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
+		
+		stemXoffset = stemXoffset - width/20;
+		
+		g.setColor(husk);
+		g.fillRoundRect(stemXoffset, height/2+height/5, squareSide/20, squareSide, width/50, height/50);
+		g.fillArc(stemXoffset-width/70,height/2+height/4,width/30,width/20,135,270);
+				
+		
+		g.setColor(corn);
+		g.drawLine(stemXoffset+width/250, height/2+height/6, stemXoffset+width/250, height/2+height/5);
+		g.drawLine(stemXoffset-width/100, height/2+height/5, stemXoffset+width/50, height/2+height/5);
+		g.fillOval(stemXoffset-width/300, height/2+height/4, height/50, height/20);
 		
 		
 		// Put your code above this line. This makes the drawing smoother.
