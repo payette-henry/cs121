@@ -18,10 +18,10 @@ import java.util.Random;
 /**
  * CS 121 Project 1: Traffic Animation
  *
- * Animates a [put your description here]
+ * Animates an Unidentified Flying Object
  *
  * @author BSU CS 121 Instructors
- * @author [put your name here]
+ * @author Henry Goetsch
  */
 @SuppressWarnings("serial")
 public class TrafficAnimation extends JPanel
