@@ -10,7 +10,7 @@ public class CharacterComparison
 {
 	public static void main(String[] args)
 	{
-		String word = "purple";
+		String word = "@grapefruit";
 		char firstLetter = word.charAt(0);
 		int asciiValue =  (int)firstLetter;
 		
