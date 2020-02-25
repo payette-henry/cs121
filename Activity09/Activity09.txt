@@ -9,5 +9,5 @@ the result is a calculation, and it may not be exact. This is due to binary enco
 6. code word is "peanut" (id=20) input is "peanut" (id=35)
 7.else. the IDs dont match and the if statement is not satisfied.
 1.3
-2. 
+2. firstletter is p, asciiValue is 112
  
