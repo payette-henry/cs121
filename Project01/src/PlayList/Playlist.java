@@ -1,17 +1,19 @@
-package Playlist;
+package PlayList;
 
-import Song.Song;
+
 import java.util.Scanner;
 import java.text.DecimalFormat;
+import PlayList.Song;
+
 
 
 /**
- * Project 1: Playlist
+ * Project 1: PlayList
  * 
  * @author CS121 Instructors
  * @author Henry Goetsch
  */
-public class Playlist
+public class PlayList
 {
 	public static void main(String[] args)
 	{
@@ -133,7 +135,7 @@ public class Playlist
 		Song song2 = new Song(songTitle, songArtist, songAlbum, songTime);
 		Song song3 = new Song(songTitle, songArtist, songAlbum, songTime);
 		
-		System.out.println("Hello, Welcome to Playlist Generator 9000.");
+		System.out.println("Hello, Welcome to PlayList Generator 9000.");
 		//three songs
 		for(int i = 0; i < 3; i++)
 		{
