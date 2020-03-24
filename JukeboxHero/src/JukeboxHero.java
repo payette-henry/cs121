@@ -1,9 +1,14 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class JukeboxHero
 {
 	public static void main(String[] args)
 	{
+		ArrayList<Song> songList = new ArrayList<Song>();
+		
+		
+		
 		Scanner scan = new Scanner(System.in);
 		String command = new String();
 		String menu = "*****************************\r\n" + 
@@ -16,11 +21,7 @@ public class JukeboxHero
 				"(Q)uit\r\n"
 				;
 		System.out.println(menu);
-
-		
-
-		
-		
+			
 		while(!command.equals("quit"))
 		{
 			System.out.println("\r\n"+"Please enter a command (press 'm' for Menu):");
@@ -47,6 +48,9 @@ public class JukeboxHero
 			case "load":
 			case "Load":
 				System.out.println("test:load");
+				
+				String filename =  scan.nextLine();
+				
 				break;
 			case "s":
 			case "S":
@@ -69,10 +73,7 @@ public class JukeboxHero
 			default:
 				System.out.println("Invalid selection!");
 			}
-			//System.out.println("Test:escaped switch!");
 		}
-				
-		//System.out.println("Test:escaped while!");
 		scan.close();
 	}
 }
