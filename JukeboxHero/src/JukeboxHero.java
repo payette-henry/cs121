@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class JukeboxHero
 {
@@ -47,9 +49,25 @@ public class JukeboxHero
 			case "L":
 			case "load":
 			case "Load":
-				System.out.println("test:load");
+				System.out.println("insert filename:");
 				
 				String filename =  scan.nextLine();
+				
+				File songfile = new File(filename);
+				if(songfile.exists() && songfile.isFile())
+				{
+				    try {
+				        Scanner fileScan = new Scanner(songfile);
+				        while(fileScan.hasNextLine())
+				        {
+				            // Iterate through every line of the file
+				        }
+				    } catch (FileNotFoundException e) {
+				        // Print and/or handle error
+				    }
+				}
+				
+				//System.out.println(fileScan);
 				
 				break;
 			case "s":
