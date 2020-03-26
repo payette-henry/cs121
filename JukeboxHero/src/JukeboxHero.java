@@ -49,37 +49,50 @@ public class JukeboxHero
 			case "L":
 			case "load":
 			case "Load":
-				System.out.println("insert filename:");
+				System.out.println("Load Catalog...");
+				System.out.println("Please enter a filename:");
 				
-				String filename =  scan.nextLine();
+				String fileName =  scan.nextLine();
 				
-				File songfile = new File(filename);
-				if(songfile.exists() && songfile.isFile())
+				File songFile = new File(fileName);
+				if(songFile.exists() && songFile.isFile())
 				{
 				    try {
-				        Scanner fileScan = new Scanner(songfile);
+				        songList.clear();
+				    	Scanner fileScan = new Scanner(songFile);
 				        while(fileScan.hasNextLine())
 				        {
-				            // Iterate through every line of the file
+				        	Scanner lineScan = new Scanner(fileScan.nextLine());
+				        	lineScan.useDelimiter(",");
+                            String artist = lineScan.next();
+                            String album= lineScan.next();
+                            String title = lineScan.next();
+                            int duration = lineScan.nextInt();
+                            Song newSong = new Song(artist, album, title, duration);
+                            songList.add(newSong);
+				        	
+				            // Iterate through every line of the file Artist, Album, Title, Duration
 				        }
 				    } catch (FileNotFoundException e) {
 				        // Print and/or handle error
 				    }
 				}
 				
-				//System.out.println(fileScan);
+				System.out.println("Catalog containing " + songList.size() + " loaded successfully.");
 				
 				break;
 			case "s":
 			case "S":
 			case "search":
 			case "Search":
+				System.out.println("Search Songs...");
 				System.out.println("test:search");
 				break;
 			case "a":
 			case "A":
 			case "analyze":
 			case "Analyze":
+				System.out.println("Analyze Playlist...");
 				System.out.println("test:analyze");
 				break;
 			case "p":
