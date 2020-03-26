@@ -85,8 +85,28 @@ public class JukeboxHero
 			case "S":
 			case "search":
 			case "Search":
-				System.out.println("Search Songs...");
-				System.out.println("test:search");
+				ArrayList<Song> searchResult = new ArrayList<Song>();
+				System.out.println("Search Catalog...");
+				System.out.println("Please enter the search query:");
+				
+				String query =  scan.nextLine();
+				String querylc = new String();
+				querylc.equalsIgnoreCase(query);
+				
+				for(int i = 0; i < songList.size(); i++)
+				{
+					Song s = songList.get(i);
+					if(s.toString().contains(querylc))
+					{
+						searchResult.add(s);
+					}
+				}
+				System.out.println("Found " + searchResult.size() + " matches");
+				System.out.println("---------------------------------\r\n");
+				for(Song s : searchResult)
+				{
+					System.out.println(s);					
+				}
 				break;
 			case "a":
 			case "A":
@@ -99,7 +119,13 @@ public class JukeboxHero
 			case "P":
 			case "print":
 			case "Print":
-				System.out.println("test:print");
+				System.out.println("Song list contains " + songList.size() + " songs...\r\n" + 
+						"---------------------------------\r\n");
+				for(Song s : songList)
+				{
+				    System.out.println(s);
+				}
+
 				break;
 			default:
 				System.out.println("Invalid selection!");
