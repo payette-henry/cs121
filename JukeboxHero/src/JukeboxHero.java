@@ -117,7 +117,7 @@ public class JukeboxHero
 				ArrayList<Song> album = new ArrayList<Song>();
 				for(int i = 0; i < songList.size();i++)
 				{
-					//incomplete
+					//incompletee
 				}
 				break;
 			case "p":
